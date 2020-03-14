@@ -5,5 +5,5 @@ from products.models import Product
 
 
 def do_search(request):
-    product = Product.objects.filter(name__icontains=request.GET['q'])
-    return render(request, "products.html", {"products":products})
+    products = Product.objects.filter(name__icontains=request.GET['q'])
+    return render(request, "products.html", {"products": products})
