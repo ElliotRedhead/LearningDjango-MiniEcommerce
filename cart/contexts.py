@@ -7,7 +7,7 @@ def cart_contents(request):
     Ensures cart content is available to any page of the app.
     """
     cart = request.session.get('cart', {})
-    cart_items = {}
+    cart_items = []
     total = 0
     product_count = 0
     for id, quantity in cart.items():
