@@ -4,9 +4,9 @@ from products.models import Product
 
 def cart_contents(request):
     """
-    Ensures that the cart contents are available when rendering every page.
+    Ensures cart content is available to any page of the app.
     """
-    cart = request.session.get("cart", {})
+    cart = request.session.get('cart', {})
     cart_items = []
     total = 0
     product_count = 0
