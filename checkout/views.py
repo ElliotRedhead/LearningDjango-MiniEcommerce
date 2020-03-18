@@ -10,7 +10,7 @@ import stripe
 
 # Create your views here.
 
-stripe_api_key = settings.STRIPE_SECRET
+stripe.api_key = settings.STRIPE_SECRET
 
 
 @login_required()
@@ -53,7 +53,8 @@ def checkout(request):
                 messages.error(request, "Unable to take payment.")
         else:
             print(payment_form.errors)
-            messages.error(request, "We were unable to take a payment with that card.")
+            messages.error(
+                request, "We were unable to take a payment with that card.")
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
@@ -61,4 +62,4 @@ def checkout(request):
         "order_form": order_form,
         "payment_form": payment_form,
         "publishable": settings.STRIPE_PUBLISHABLE
-        })
+    })
